@@ -1,4 +1,3 @@
-import { getAllByDisplayValue } from "@testing-library/react";
 import React from "react";
 
 class Expenditure extends React.Component{
@@ -10,21 +9,19 @@ class Expenditure extends React.Component{
     saveInLocalStorage = (event) => {
         event.preventDefault();
         
-        let tar = event.target[1].value
-        tar = Number(tar)
-        this.priser.push(tar)
+        let expenditureArray = event.target[1].value
+        expenditureArray = Number(expenditureArray)
+        this.priser.push(expenditureArray)
         localStorage.setItem('priser', JSON.stringify(this.priser))
-        this.uttag = this.uttag + tar
-        
-        console.log(this.uttag)
-        
+        this.uttag = this.uttag + expenditureArray
 
         let itemName = event.target[0].value
         this.boughtItemsArray.push(itemName)
         localStorage.setItem('boughtItems', JSON.stringify(this.boughtItemsArray))
 
-        this.boughtItemsArray.map(boughtItemsArrays => 
-        <li>{boughtItemsArrays}</li>)
+        
+
+        
 
         
         
