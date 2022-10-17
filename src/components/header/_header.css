@@ -1,0 +1,10 @@
+header{
+    height: 80px;
+    background-color: lightgray;
+}
+
+.gritPicture{
+    height: 78px;
+    padding: 1px;
+    margin-left: 30px;
+}

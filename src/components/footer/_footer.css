@@ -1,0 +1,12 @@
+footer{
+    height: 250px;
+    background-color: darkslategray;
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    margin: 1rem 3rem;
+    font-weight: bolder;
+    color: black;
+}
