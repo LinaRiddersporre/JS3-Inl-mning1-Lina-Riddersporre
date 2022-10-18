@@ -7,7 +7,7 @@ class App extends React.Component{
   
   moneyToAccount = 0;
   moneyFromAccount = 0;
-  boughtArticle = [];
+  boughtItemsArray = [];
 
     
 
@@ -18,7 +18,7 @@ class App extends React.Component{
     }else{
       localStorage.setItem('moneyToAccount', moneyToAccount)
     }
-    window.location.reload()
+    // window.location.reload()
   }
 
   getTotalBill = (moneyFromAccount) => {
@@ -27,14 +27,12 @@ class App extends React.Component{
     }else{
       localStorage.setItem('moneyFromAccount', moneyFromAccount)
     }
-    window.location.reload()
+    // window.location.reload()
   }
 
-  saveArticles = (boughtArticle) => {
-    if(localStorage.getItem('boughtArticle')){
-      localStorage.setItem('boughtArticle', localStorage.getItem('boughtArticle') + boughtArticle) 
-    }else{localStorage.setItem('boughtArticle', boughtArticle)}
- }
+//   saveArticles = (e) => {
+//     console.log(e.target)
+//  }
  
   render(){
     const showMoneyToAccount = localStorage.getItem('moneyToAccount') ? localStorage.getItem('moneyToAccount') : 0;
@@ -43,6 +41,7 @@ class App extends React.Component{
       <div className="divBody">
         <h1>Totala insättningar: {showMoneyToAccount}</h1>
         <h1>Totala  utgifter: {showTotalBill}</h1>
+        {/* {this.saveArticles()} */}
         <Add hello='hello' getAddResult={this.getAddResult}/>
         <Expenditure getTotalBill={this.getTotalBill}/>
       
