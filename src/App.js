@@ -7,7 +7,8 @@ class App extends React.Component{
   
   moneyToAccount = 0;
   moneyFromAccount = 0;
-  array = new Map()
+  array = new Map(localStorage.myMap ? JSON.parse(localStorage.myMap):null)
+  
   
   // storedItems = localStorage.getItem('boughtItemsArray')
 
@@ -20,7 +21,7 @@ class App extends React.Component{
     }else{
       localStorage.setItem('moneyToAccount', moneyToAccount)
     }
-    // window.location.reload()
+    window.location.reload()
   }
 
   getTotalBill = (moneyFromAccount) => {
@@ -29,7 +30,7 @@ class App extends React.Component{
     }else{
       localStorage.setItem('moneyFromAccount', moneyFromAccount)
     }
-    // window.location.reload()
+    window.location.reload()
   }
 
   getSavedGrocceries = (boughtItemObject) => {
