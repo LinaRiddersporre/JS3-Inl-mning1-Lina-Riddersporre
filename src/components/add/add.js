@@ -19,8 +19,6 @@ class Add extends React.Component{
     render(){
         return(
             <form onSubmit={this.onSubmitHandler}>
-                {console.log(this.props)}
-
                 <input 
                 placeholder="Insättning"
                 type="number"

@@ -3,26 +3,30 @@ import React from "react";
 class Expenditure extends React.Component{
     prices = 0;
     moneyFromAccount = 0;
-    boughtItemsArray = []
+    boughtItemObject = {
+        name: '',
+        price: 0
+      }
     
     getBillAmount = (e) => {
         this.prices = parseInt(e.target.value)
         console.log(this.prices)
     }
 
-    getBoughtGrocceries = (e) => {
-        let theGrosserie = e.target.firstChild.value
-        console.log(e.target.firstChild.value)
-        this.boughtItemsArray.push(theGrosserie)
-        console.log(this.boughtItemsArray)
+    boughtItems = (e) => {
+        this.boughtItemObject.name = e.target[0].value
+        this.boughtItemObject.price = e.target[1].value
+        console.log(this.boughtItemObject.name)
     }
 
     onSubmitHandler = (e) => {
         e.preventDefault()
         this.moneyFromAccount = this.moneyFromAccount + this.prices
         console.log(this.moneyFromAccount)
+        this.boughtItems(e)
         this.props.getTotalBill(this.moneyFromAccount)
-        this.getBoughtGrocceries(e)
+        this.props.getSavedGrocceries(this.boughtItemObject)
+        
     }
 
     render(){
