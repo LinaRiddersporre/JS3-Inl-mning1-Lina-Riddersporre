@@ -25,8 +25,8 @@ class Expenditure extends React.Component{
     
         return(
             <form onSubmit={this.onSubmitHandler}>
-                <input type='text' onChange={this.getBoughtArticle}></input>
-                <input type='number' onChange={this.getBillAmount}></input>
+                <input type='text' placeholder="Vilken artikel?" onChange={this.getBoughtArticle}></input>
+                <input type='number' placeholder="Vilken kostnad?" onChange={this.getBillAmount}></input>
                 <input type='submit' value='submit'/>
                 
             </form>

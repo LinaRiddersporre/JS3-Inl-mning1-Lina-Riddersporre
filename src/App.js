@@ -35,6 +35,7 @@ class App extends React.Component{
       localStorage.setItem('boughtArticle', localStorage.getItem('boughtArticle') + boughtArticle) 
     }else{localStorage.setItem('boughtArticle', boughtArticle)}
  }
+ 
   render(){
     const showMoneyToAccount = localStorage.getItem('moneyToAccount') ? localStorage.getItem('moneyToAccount') : 0;
     const showTotalBill = localStorage.getItem('moneyFromAccount') ? localStorage.getItem('moneyFromAccount') : 0;
