@@ -1,18 +1,19 @@
 import React from "react";
 
 class Add extends React.Component{
-    addValue = 0;
-    moneyToAccount = 0;
+    boughtItemObject = {
+        value: 0,
+        isIncome: true
+    }
+    
 
     getInputAmount = (event) => {
-        this.addValue = parseInt(event.target.value)
-        console.log(this.addValue)
+        this.boughtItemObject.value = parseInt(event.target.value)
     }
 
     onSubmitHandler = (e) => {
         e.preventDefault()
-        this.moneyToAccount = this.moneyToAccount + this.addValue
-        this.props.getAddResult(this.moneyToAccount)
+        this.props.getSavedGrocceries(this.boughtItemObject)
     }
     
 

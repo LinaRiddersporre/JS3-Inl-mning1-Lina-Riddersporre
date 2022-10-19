@@ -5,7 +5,8 @@ class Expenditure extends React.Component{
     moneyFromAccount = 0;
     boughtItemObject = {
         name: '',
-        price: 0
+        price: 0,
+        isIncome: false
       }
     
     getBillAmount = (e) => {

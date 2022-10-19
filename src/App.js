@@ -7,22 +7,27 @@ class App extends React.Component{
   
   moneyToAccount = 0;
   moneyFromAccount = 0;
+  saldo = localStorage.getItem('saldo') ? parseInt( localStorage.getItem('saldo')) : 0;
+  
   array = new Map(localStorage.myMap ? JSON.parse(localStorage.myMap):null)
   
 
-  getAddResult = (moneyToAccount) => {
-    console.log(moneyToAccount)
-    if(localStorage.getItem('moneyToAccount')){
-      localStorage.setItem('moneyToAccount', parseInt(localStorage.getItem('moneyToAccount')) + moneyToAccount)
-    }else{
-      localStorage.setItem('moneyToAccount', moneyToAccount)
-    }
-    window.location.reload()
-  }
+  // getAddResult = (moneyToAccount) => {
+  //   console.log(moneyToAccount)
+  //   if(localStorage.getItem('moneyToAccount')){
+  //     localStorage.setItem('moneyToAccount', parseInt(localStorage.getItem('moneyToAccount')) + moneyToAccount)
+  //   }else{
+  //     localStorage.setItem('moneyToAccount', moneyToAccount)
+  //   }
+  //   // window.location.reload()
+  // }
+
+
 
   getTotalBill = (moneyFromAccount) => {
     if(localStorage.getItem('moneyFromAccount')){
       localStorage.setItem('moneyFromAccount', parseInt(localStorage.getItem('moneyFromAccount')) + moneyFromAccount)
+      
     }else{
       localStorage.setItem('moneyFromAccount', moneyFromAccount)
     }
@@ -30,25 +35,26 @@ class App extends React.Component{
   }
 
   getSavedGrocceries = (boughtItemObject) => {
-    const item = {
-      name: boughtItemObject.name,
-      price: boughtItemObject.price
+    if(boughtItemObject.isIncome){
+      this.saldo = this.saldo + boughtItemObject.value
+      localStorage.setItem('saldo', this.saldo)
+    }else{
+      if(this.array.has(boughtItemObject.name)){
+        alert('finns')
+      }else{
+        if(boughtItemObject.price > this.saldo){
+          alert('Pengar slut, ge nu')
+        }else{
+          this.saldo = this.saldo - boughtItemObject.price
+          localStorage.setItem('saldo', this.saldo)
+          this.array.set(boughtItemObject.name, boughtItemObject)
+          localStorage.myMap = JSON.stringify(Array.from(this.array))
+        }
+      }
     }
-    // localStorage.setItem('boughtItemsArray', boughtItemsArray)
-    console.log(item)
-    
-    this.array.set(item.name, item)
-    localStorage.myMap = JSON.stringify(Array.from(this.array))
-
-    let help = [...this.array]
-    console.log(localStorage.myMap)
-    this.getItemsToHtml(help)
-    
+    window.location.reload()
   }
-
-  getItemsToHtml = () => {
     
-  }
  
   render(){
     const showMoneyToAccount = localStorage.getItem('moneyToAccount') ? localStorage.getItem('moneyToAccount') : 0;
@@ -57,6 +63,7 @@ class App extends React.Component{
       <div className="divBody">
         <h1>Totala insättningar: {showMoneyToAccount}</h1>
         <h1>Totala  utgifter: {showTotalBill}</h1>
+        <h1>Saldo: {Number.parseInt( this.saldo)} </h1>
         <h4>Köpta artiklar: </h4>
         {[...this.array].map((value, index) => {
           return(
@@ -65,10 +72,9 @@ class App extends React.Component{
               <h4>{value[1].price}</h4> 
             </div>
           )
-          }
-        )}
+        })}
         
-        <Add getAddResult={this.getAddResult}/>
+        <Add getSavedGrocceries={this.getSavedGrocceries}/>
         <Expenditure getTotalBill={this.getTotalBill} getSavedGrocceries={this.getSavedGrocceries} />
       </div>
     )
