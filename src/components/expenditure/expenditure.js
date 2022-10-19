@@ -16,7 +16,7 @@ class Expenditure extends React.Component{
     boughtItems = (e) => {
         this.boughtItemObject.name = e.target[0].value
         this.boughtItemObject.price = e.target[1].value
-        console.log(this.boughtItemObject.name)
+        console.log(e.target[0])
     }
 
     onSubmitHandler = (e) => {
