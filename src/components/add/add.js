@@ -1,21 +1,19 @@
 import React from "react";
 
 class Add extends React.Component{
-    boughtItemObject = {
+    transaction = {
         value: 0,
         isIncome: true
     }
-    
 
     getInputAmount = (event) => {
-        this.boughtItemObject.value = parseInt(event.target.value)
+        this.transaction.value = parseInt(event.target.value)
     }
 
     onSubmitHandler = (e) => {
         e.preventDefault()
-        this.props.getSavedGrocceries(this.boughtItemObject)
+        this.props.getTransaction(this.transaction)
     }
-    
 
     render(){
         return(
@@ -25,11 +23,9 @@ class Add extends React.Component{
                 type="number"
                 onChange={this.getInputAmount} />
                 <input type='submit' value='submit'></input>
-                
             </form>
         )
     }
-    
 }
 
 export default Add;
