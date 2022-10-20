@@ -21,7 +21,8 @@ class Add extends React.Component{
                 <input 
                 placeholder="Insättning"
                 type="number"
-                onChange={this.getInputAmount} />
+                onChange={this.getInputAmount} 
+                className="incomeInput"/>
                 <input type='submit' value='submit'></input>
             </form>
         )

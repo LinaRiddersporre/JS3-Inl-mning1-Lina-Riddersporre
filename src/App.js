@@ -39,20 +39,27 @@ class App extends React.Component {
   render() {
     return (
       <div className="divBody">
-        <h1>Totala insättningar: {this.totalIncome}</h1>
-        <h1>Totala  utgifter: {this.totalExpenditure}</h1>
-        <h1>Saldo: {this.saldo} </h1>
-        <h4>Köpta artiklar: </h4>
-        {[...this.array].map((value, index) => {
-          return (
-            <div key={index}>
-              <h4>{value[1].name}</h4>
-              <h4>{value[1].price}</h4>
-            </div>
-          )
-        })}
-        <Add getTransaction={this.getTransaction} />
-        <Expenditure getTransaction={this.getTransaction} />
+        <section className="transactionSection">
+          <h1>Totala insättningar: {this.totalIncome}</h1>
+          <h1>Totala  utgifter: {this.totalExpenditure}</h1>
+          <h1>Saldo: {this.saldo} </h1>
+        </section>
+        <section className="inputSection">
+          <Add getTransaction={this.getTransaction} />
+          <Expenditure getTransaction={this.getTransaction} />
+        </section>
+        <section className="expenditureSection">
+          <h4>Utgifter: </h4>
+          {[...this.array].map((value, index) => {
+            return (
+              <div key={index} className='itemSection'>
+                <h3>{value[1].name}</h3>
+                <h3>{value[1].price}</h3>
+              </div>
+            )
+          })}
+        </section>
+        
       </div>
     )
   }

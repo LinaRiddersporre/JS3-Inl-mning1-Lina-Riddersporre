@@ -22,9 +22,9 @@ class Expenditure extends React.Component{
     render(){
         return(
             <form onSubmit={this.onSubmitHandler}>
-                <input type='text' placeholder="Vilken artikel?" ></input>
-                <input type='number' placeholder="Vilken kostnad?"></input>
-                <input type='submit' value='submit'/>
+                <input type='text' placeholder="Vilken artikel?" className="itemInput"></input>
+                <input type='number' placeholder="Vilken kostnad?" className="valueInput"></input>
+                <input type='submit' value='submit'className="expenditureButton"/>
             </form>
         )
     }

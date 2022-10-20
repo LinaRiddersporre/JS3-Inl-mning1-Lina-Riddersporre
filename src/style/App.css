@@ -1,15 +1,56 @@
+
+
 body {
     height: 100%;
     display: flex;
     flex-direction: column;
     margin: 0;
+    
 }
-
-
 
 .divBody{
     min-height: 100vh;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
 }
 
+.transactionSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid grey 1px;
+    margin-top: 1rem;
+}
 
+.inputSection{
+    display: flex;
+    padding: 2rem;
+    justify-content: space-around;
+    background-color: darkgrey;
+    border: solid grey 1px;
+}
 
+.expenditureSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: hotpink;
+    color: white;
+    border: solid grey 1px;
+    margin-bottom: 1rem;
+}
+
+.itemSection{
+    display: flex;
+}
+
+.itemSection h3{
+    margin: 1rem 4rem;
+}
+
+input{
+    border: solid black 2px;
+}
